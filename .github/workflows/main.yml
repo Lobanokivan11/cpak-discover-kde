@@ -24,7 +24,7 @@ jobs:
           git clone https://invent.kde.org/plasma/discover.git
           git clone https://github.com/Containerpak/cpak.git
           cd discover
-          python3 apply_patch.py
+          python3 ../apply_patch.py
           cp -r ../cpak/contrib/discover/CpakBackend libdiscover/backends/CpakBackend
 
       - name: Install build dependencies
