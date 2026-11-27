@@ -38,9 +38,9 @@ jobs:
             libkf6kcmutils-dev libkf6codecs-dev libkf6config-dev \
             libkf6configwidgets-dev libkf6coreaddons-dev libkf6crash-dev \
             libkf6dbusaddons-dev libkf6i18n-dev libkf6idletime-dev \
-            libkf6itemmodels-dev libkf6kio-dev \
+            libkf6itemmodels-dev libkf6iconthemes-dev libkf6kio-dev \
             libkf6newstuff-dev libkf6notifications-dev libkf6purpose-dev \
-            libkf6service-dev libkf6statusnotifieritem-dev \
+            libkf6service-dev libkf6kirigami-dev libkf6statusnotifieritem-dev \
             libkf6userfeedback-dev libkf6widgetsaddons-dev \
             libkf6windowsystem-dev libkf6xmlgui-dev \
             libappstreamqt-dev kirigami-addons-dev
