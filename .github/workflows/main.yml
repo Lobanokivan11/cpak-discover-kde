@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: kdeneon/all:dev
-      options: --user root
     permissions: write-all
     steps:
       - name: Checkout repository
