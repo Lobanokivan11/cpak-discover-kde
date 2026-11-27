@@ -34,7 +34,7 @@ jobs:
 
       - name: Configure CMake
         run: |
-          cmake -B build -G Ninja \
+          cmake -S discover -B build -G Ninja \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
             -DBUILD_CpakBackend=ON
