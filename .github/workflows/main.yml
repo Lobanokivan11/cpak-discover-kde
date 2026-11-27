@@ -55,6 +55,8 @@ jobs:
       - name: Copy project
         run: |
           DESTDIR=$(pwd)/release_pkg cmake --install build/libdiscover/backends/CpakBackend
+          cp install.sh uninstall.sh release_pkg/
+          chmod +x release_pkg/install.sh release_pkg/uninstall.sh
           cd release_pkg
           zip -r ../cpak-backend-x86_64.zip .
           cd ..
