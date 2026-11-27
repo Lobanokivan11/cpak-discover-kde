@@ -32,20 +32,6 @@ jobs:
           sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
           sudo apt update
           sudo apt-get build-dep -y plasma-discover
-          sudo apt install -y --install-recommends \
-            build-essential cmake ninja-build zip git \
-            extra-cmake-modules pkg-config \
-            qt6-base-dev qt6-declarative-dev \
-            libkf6archive-dev libkf6attica-dev libkf6auth-dev \
-            libkf6kcmutils-dev libkf6codecs-dev libkf6config-dev \
-            libkf6configwidgets-dev libkf6coreaddons-dev libkf6crash-dev \
-            libkf6dbusaddons-dev libkf6i18n-dev libkf6idletime-dev \
-            libkf6itemmodels-dev libkf6iconthemes-dev libkf6kio-dev \
-            libkf6newstuff-dev libkf6notifications-dev libkf6purpose-dev \
-            libkf6service-dev kf6-kirigami-dev libkf6statusnotifieritem-dev \
-            libkf6userfeedback-dev libkf6widgetsaddons-dev \
-            libkf6windowsystem-dev libkf6xmlgui-dev \
-            libappstreamqt-dev kirigami-addons-dev
 
       - name: Configure CMake
         run: |
