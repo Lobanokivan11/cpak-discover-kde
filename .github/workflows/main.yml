@@ -48,6 +48,7 @@ jobs:
       - name: Configure CMake
         run: |
           sed -i 's/set(KF6_MIN_VERSION ".*")/set(KF6_MIN_VERSION "6.24.0")/' discover/CMakeLists.txt
+          sed -i 's/set(QT_MIN_VERSION ".*")/set(QT_MIN_VERSION "6.10.2")/' discover/CMakeLists.txt
           cmake -S discover -B build -G Ninja \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
