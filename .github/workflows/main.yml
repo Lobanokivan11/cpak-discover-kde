@@ -37,10 +37,17 @@ jobs:
           cmake -S discover -B build -G Ninja \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
-            -DBUILD_CpakBackend=ON
+            -DBUILD_CpakBackend=ON \
+            -DBUILD_FlatpakBackend=OFF \
+            -DBUILD_SnapBackend=OFF \
+            -DBUILD_PackageKitBackend=OFF \
+            -DBUILD_FwupdBackend=OFF \
+            -DBUILD_RpmOstreeBackend=OFF \
+            -DBUILD_SteamOSBackend=OFF \
+            -DBUILD_DummyBackend=OFF
 
       - name: Build project
-        run: cmake --build build --parallel $(nproc)
+        run: cmake --build build --target cpak-backend --parallel $(nproc)
 
       - name: Copy project
         run: |
