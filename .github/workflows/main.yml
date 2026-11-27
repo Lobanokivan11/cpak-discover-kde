@@ -1,0 +1,61 @@
+name: Patch and Build Discover
+
+on:
+  pull_request:
+  workflow_dispatch: 
+  schedule:
+    - cron: 0 * * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Prepare Backend
+        run: |
+          git clone https://invent.kde.org/plasma/discover.git
+          git clone https://github.com/Containerpak/cpak.git
+          cd discover
+          python3 apply_patch.py
+          cp -r ../cpak/contrib/discover/CpakBackend libdiscover/backends/CpakBackend
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake extra-cmake-modules ninja-build qt6-base-dev
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_CpakBackend=ON
+
+      - name: Build project
+        run: cmake --build build --parallel $(nproc)
+
+      - name: Copy project
+        run: |
+          DESTDIR=$(pwd)/release_pkg cmake --install build
+          cd release_pkg
+          zip -r ../cpak-backend-x86_64.zip .
+          cd ..
+          rm -rf release_pkg
+
+      - name: Release Backend
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./cpak-backend-x86_64.zip
+          tag: prebuilt
+          overwrite: true
+          body: "Cpak Backend for KDE SOFTWARE CENTER"
+          file_glob: true
