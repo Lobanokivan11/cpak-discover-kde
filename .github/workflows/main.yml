@@ -38,7 +38,7 @@ jobs:
             libkf6kcmutils-dev libkf6codecs-dev libkf6config-dev \
             libkf6configwidgets-dev libkf6coreaddons-dev libkf6crash-dev \
             libkf6dbusaddons-dev libkf6i18n-dev libkf6idletime-dev \
-            libkf6io-dev libkf6itemmodels-dev libkf6io-dev \
+            libkf6itemmodels-dev libkf6kio-dev \
             libkf6newstuff-dev libkf6notifications-dev libkf6purpose-dev \
             libkf6service-dev libkf6statusnotifieritem-dev \
             libkf6userfeedback-dev libkf6widgetsaddons-dev \
