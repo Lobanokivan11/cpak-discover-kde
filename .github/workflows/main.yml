@@ -21,7 +21,7 @@ jobs:
 
       - name: Prepare Backend
         run: |
-          git clone https://invent.kde.org/plasma/discover.git --branch v6.7.4
+          git clone https://invent.kde.org/plasma/discover.git
           git clone https://github.com/Containerpak/cpak.git
           cd discover
           python3 ../apply_patch.py
@@ -47,6 +47,7 @@ jobs:
 
       - name: Configure CMake
         run: |
+          sed -i 's/set(KF6_MIN_VERSION ".*")/set(KF6_MIN_VERSION "6.24.0")/' discover/CMakeLists.txt
           cmake -S discover -B build -G Ninja \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
