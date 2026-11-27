@@ -21,7 +21,7 @@ jobs:
 
       - name: Prepare Backend
         run: |
-          git clone https://invent.kde.org/plasma/discover.git
+          git clone https://invent.kde.org/plasma/discover.git --branch v6.7.4
           git clone https://github.com/Containerpak/cpak.git
           cd discover
           python3 ../apply_patch.py
